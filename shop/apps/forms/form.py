@@ -57,20 +57,20 @@ def chekvalidname(value):
     if len(value)<3 or len(value)>8:
         raise forms.ValidationError('کاراکترها بیش از حد مجاز هستند')
   
-def chekvalidage(value):
-    value=int(value)
-    if value<20 or value>40:
-        raise forms.ValidationError('سن درست نیست')
+# def chekvalidage(value):
+#     value=int(value)
+#     if value<20 or value>40:
+#         raise forms.ValidationError('سن درست نیست')
     
 class input4(forms.Form):
     name=forms.CharField(max_length=30,
                          label="نام",
                          required=True,
-                         validators=[chekvalidname])
+                         validators=[validators.MaxLengthValidator(8,message='کاراکتر بیش از حد '),validators.MinLengthValidator(2,message='کاراکتر کمتر از حد مجاز')])
     
     family=forms.CharField(max_length=50,label=" نام خانوادگی",required=True)
     
-    age=forms.IntegerField(label='سن', required=False,validators=[chekvalidage])
+    age=forms.IntegerField(label='سن', required=False,validators=[validators.MaxValueValidator(40,message='سن بیش از 40 سال میباشد'),validators.MinValueValidator(20,message='سن کمتر از 20 سال میباشد')])
     
     def clean_name(self):
         name = self.cleaned_data["name"]
