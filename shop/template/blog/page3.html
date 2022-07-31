@@ -1,0 +1,27 @@
+{% extends "maintemplate.html" %} {% block title %} صفحه نویسندگان {% endblock %} {% block content %}
+<h1>لیست نویسندگان</h1>
+<table border="1" width="1000" style="margin:0 auto ;">
+    <tr>
+        <th>کد نویسنده</th>
+        <th>نام</th>
+        <th>نام خانوادگی</th>
+        <th>سن</th>
+        <th>عکس</th>
+        <th>جزییات</th>
+
+
+    </tr>
+    {% for author in authors %}
+    <tr>
+        <td>{{author.id}}</td>
+        <td>{{author.name}}</td>
+        <td>{{author.family}}</td>
+        <td>{{author.age}}</td>
+        <td><a href="detail/{{author.id}}">جزییات</a></td>
+
+
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
