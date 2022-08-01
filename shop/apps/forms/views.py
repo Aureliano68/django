@@ -32,9 +32,6 @@ def form4(request):
             data=form.cleaned_data
             print(data['name'],data['family'],data['age']) 
             
-        else:
-            contex['error_message']='not valid...'
-            
     else:
         form=input4()
     contex['form']=form

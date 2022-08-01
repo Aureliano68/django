@@ -77,7 +77,7 @@ class article(models.Model):
     publish=models.ManyToManyField(publish,verbose_name='انتشارات')
     
     def __str__(self) -> str:
-        return f'{self.name_article}\t{self.create_at}'
+        return f'{self.name_article}\t{self.text_article}'
     
     class Meta:
         db_table = 'article_db'
